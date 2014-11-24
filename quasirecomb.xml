@@ -1,0 +1,24 @@
+<tool id="quasirecomb-coverage" name="QuasiRecomb coverage" version="1.2.0">
+  <description>QuasiRecomb coverage calculator</description>
+  <!-- 
+    We can't explicitly provide an index file, so use a symlink hack to make QR pick it up
+  -->
+  <command>
+    ln -sf "${input.metadata.bam_index}" "${input}.bai"
+    &amp;&amp; java $jvmopts -jar "$__root_dir__/localtools/QuasiRecomb.jar" -i "$input" -coverage
+  </command>
+  <inputs>
+    <param name="jvmopts" type="text" value="-XX:NewRatio=9 -Xms4G -Xmx26G" 
+      label="JVM options" size="30" />
+    <param format="bam" name="input" type="data" label="Source file"/>
+  </inputs>
+  <outputs>
+    <data format="txt" name="allel_dist_phred_weighted" from_work_dir="support/allel_distribution_phred_weighted.txt" label="QuasiRecomb allel distribution phred weighted"/>
+    <data format="txt" name="coverage" from_work_dir="support/coverage.txt" label="QuasiRecomb coverage"/>
+  </outputs>
+
+  <help>
+QuasiRecomb coverage calculator. You will need to make an index file form BAM files to use this.
+  </help>
+
+</tool>

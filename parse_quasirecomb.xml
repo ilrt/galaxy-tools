@@ -1,0 +1,16 @@
+<tool id="parse-quasirecomb" name="Parse QuasiRecomb" version="1.1.0">
+  <description>Parse QuasiRecomb allel_distribution_phred_weighted.txt</description>
+  <command interpreter="perl">parse_quasirecomb_V2.pl "$input"</command>
+  <inputs>
+    <param format="txt" name="input" type="data" label="QuasiRecomb allel distribution phred weighted"/>
+  </inputs>
+  <outputs>
+    <data format="txt" name="minor_variants" from_work_dir="minor_variants.txt" label="Minor variants"/>
+    <data format="txt" name="consensus" from_work_dir="consensus.txt" label="Consensus"/>
+  </outputs>
+
+  <help>
+Parse QuasiRecomb allel_distribution_phred_weighted.txt
+  </help>
+
+</tool>
