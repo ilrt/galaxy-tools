@@ -1,0 +1,14 @@
+<tool id="fastq_header_modifier" name="FASTQ header modifier" version="1.0">
+    <description>converter</description>
+    <command interpreter="perl">
+        fastq_header_modifier.pl "$input" "$output" "$change"
+    </command>
+    <inputs>
+        <param format="fastq" name="input" type="data" label="Original FASTQ"/>
+        <param name="change" type="text" label="Change to be made to FASTQ header"/>
+    </inputs>
+
+    <outputs>
+        <data format="fastq" name="output" label="Modified FASTQ"/>
+    </outputs>
+</tool>
